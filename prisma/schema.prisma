@@ -1,0 +1,46 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../lib/generated/prisma"
+  moduleFormat = "esm"
+  runtime      = "nodejs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  passwordHash String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  connections  Connection[]
+  uploads      UploadedFile[]
+}
+
+model UploadedFile {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  mimetype  String
+  size      Int
+  data      Bytes
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, createdAt])
+}
+
+model Connection {
+  id                 String   @id @default(cuid())
+  userId             String
+  toolkit            String
+  connectedAccountId String
+  status             String   @default("INITIATED")
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, toolkit])
+}
