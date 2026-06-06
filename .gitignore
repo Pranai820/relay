@@ -1,0 +1,34 @@
+# dependencies
+node_modules
+
+# next.js
+.next
+out
+
+# prisma client output (regenerated on install/build)
+lib/generated
+
+# env / secrets — never commit
+.env
+.env.local
+.env.*.local
+
+# composio local session
+.composio-session-id
+
+# vercel
+.vercel
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# os
+.DS_Store
+Thumbs.db
+
+# editor
+.idea
+.vscode
