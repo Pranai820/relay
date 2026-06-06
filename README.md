@@ -71,11 +71,19 @@ https://your-ngrok-url.ngrok-free.app/api/composio/callback
    npm run db:deploy
    ```
 
-4. In each Composio auth config, set the OAuth callback URL to:
+4. **Update Composio OAuth callback URLs** (required after you know your Vercel URL):
+
+   In the [Composio dashboard](https://app.composio.dev), open each auth config (GitHub, Notion, Gmail, Google Calendar) and set the allowed callback / redirect URL to:
 
    ```txt
    https://<your-vercel-domain>/api/composio/callback
    ```
+
+   Example: `https://relay.vercel.app/api/composio/callback`
+
+   The Relay app sends this URL automatically from `window.location.origin` when a user clicks **Connect** — but Composio must allow that origin in the auth config, or OAuth will fail after deploy.
+
+5. Redeploy on Vercel if you changed env vars after the first deploy.
 
 `npm run build` runs `prisma generate` automatically; `postinstall` also regenerates the Prisma client on Vercel.
 
