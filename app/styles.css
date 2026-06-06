@@ -523,97 +523,201 @@ a {
   background: rgba(255, 255, 255, 0.12);
 }
 
-.auth-shell {
+.auth-page {
+  width: 100%;
   min-height: 100vh;
+  background: #0f172a;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
-  background: linear-gradient(160deg, var(--bg) 0%, #eaeef5 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 40px 20px;
+}
+
+.auth-bg-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .auth-card {
-  width: 100%;
-  max-width: 420px;
-  background: var(--panel);
-  border: 1px solid var(--line);
+  position: relative;
+  z-index: 10;
+  background: #ffffff;
   border-radius: 16px;
-  box-shadow: var(--shadow);
+  padding: 0;
+  width: 100%;
+  max-width: 400px;
+  overflow: hidden;
+}
+
+.auth-card-logo {
+  background: #0f172a;
+  padding: 28px 32px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.auth-card-body {
   padding: 32px;
 }
 
-.auth-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 16px;
-  margin-bottom: 24px;
-}
-
-.auth-logo {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 12px;
-}
-
-.auth-brand-copy {
-  text-align: center;
-}
-
-.auth-title {
-  margin: 0;
+.auth-heading {
+  margin: 0 0 6px;
   font-size: 20px;
-  font-weight: 650;
-  color: var(--text);
+  font-weight: 500;
+  color: #0f172a;
 }
 
-.auth-subtitle {
-  margin: 4px 0 0;
+.auth-lead {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.auth-label {
+  display: block;
   font-size: 13px;
-  color: var(--muted);
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.auth-input-wrap {
+  margin-bottom: 16px;
+}
+
+.auth-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #0f172a;
+  outline: none;
+  background: #f8fafc;
+}
+
+.auth-input:focus {
+  border-color: #3b82f6;
+  background: #ffffff;
 }
 
 .auth-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+}
+
+.auth-btn {
+  width: 100%;
+  padding: 11px;
+  background: #0f766e;
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.auth-btn:hover:not(:disabled) {
+  background: #0b5f59;
+}
+
+.auth-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.auth-footer-link {
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+  margin: 18px 0 0;
+}
+
+.auth-footer-link a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-footer-link a:hover {
+  text-decoration: underline;
+}
+
+.auth-wordmark {
+  font-size: 28px;
+  font-weight: 500;
+  color: #f8fafc;
+  letter-spacing: -0.5px;
+}
+
+.auth-tagline-logo {
+  font-size: 11px;
+  color: #64748b;
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+
+.auth-dot-active {
+  fill: #3b82f6;
+}
+
+.auth-dot-dim {
+  fill: #1e293b;
+  stroke: #334155;
+  stroke-width: 1.5;
+}
+
+.auth-conn {
+  stroke: #3b82f6;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.auth-conn-dim {
+  stroke: #334155;
+  stroke-width: 1.5;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.auth-baton-line {
+  stroke: #60a5fa;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  fill: none;
 }
 
 .auth-hint {
+  display: block;
   font-size: 12px;
   color: var(--muted);
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .auth-error {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin: 0;
+  margin: 0 0 12px;
   padding: 10px 12px;
   font-size: 13px;
   color: var(--red);
   background: #fffafa;
   border: 1px solid #fecdca;
   border-radius: 8px;
-}
-
-.auth-switch {
-  margin: 20px 0 0;
-  text-align: center;
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.auth-switch a {
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.auth-switch a:hover {
-  text-decoration: underline;
 }
 
 /* ── Quick Actions (toolkit layout) ── */

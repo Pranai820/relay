@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
-import AppLogo from "@/app/components/AppLogo";
+import AuthBackground from "@/app/components/AuthBackground";
+import AuthCardHeader from "@/app/components/AuthCardHeader";
 import Link from "next/link";
 import { Loader2, ShieldCheck, UserPlus } from "lucide-react";
 import { getPasswordError } from "@/lib/password";
@@ -50,53 +51,56 @@ export default function SignUpPage() {
   }
 
   return (
-    <main className="auth-shell">
+    <main className="auth-page">
+      <AuthBackground />
       <div className="auth-card">
-        <div className="auth-brand">
-          <AppLogo className="auth-logo" />
-          <div className="auth-brand-copy">
-            <h1 className="auth-title">Create your account</h1>
-            <p className="auth-subtitle">GitHub, Notion, Gmail, and Calendar in one place.</p>
-          </div>
+        <AuthCardHeader />
+        <div className="auth-card-body">
+          <h2 className="auth-heading">Create your account</h2>
+          <p className="auth-lead">GitHub, Notion, Gmail, and Calendar in one place.</p>
+
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <div className="auth-input-wrap">
+              <label className="auth-label" htmlFor="signup-email">Email</label>
+              <input
+                id="signup-email"
+                className="auth-input"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="you@example.com"
+                autoComplete="email"
+                required
+              />
+            </div>
+            <div className="auth-input-wrap">
+              <label className="auth-label" htmlFor="signup-password">Password</label>
+              <input
+                id="signup-password"
+                className="auth-input"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="********"
+                autoComplete="new-password"
+                minLength={8}
+                required
+              />
+              <span className="auth-hint">At least 8 characters with an uppercase letter, a lowercase letter, a number, and a symbol.</span>
+            </div>
+
+            {error && <p className="auth-error"><ShieldCheck size={14} /> {error}</p>}
+
+            <button className="auth-btn" type="submit" disabled={loading}>
+              {loading ? <Loader2 size={18} className="spin" /> : <UserPlus size={18} />}
+              Create account
+            </button>
+          </form>
+
+          <p className="auth-footer-link">
+            Already have an account? <Link href="/signin">Sign in</Link>
+          </p>
         </div>
-
-        <form className="auth-form" onSubmit={handleSubmit}>
-          <label className="field">
-            <span className="label">Email</span>
-            <input
-              className="input"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              autoComplete="email"
-              required
-            />
-          </label>
-          <label className="field">
-            <span className="label">Password</span>
-            <input
-              className="input"
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="new-password"
-              minLength={8}
-              required
-            />
-            <span className="auth-hint">At least 8 characters with an uppercase letter, a lowercase letter, a number, and a symbol.</span>
-          </label>
-
-          {error && <p className="auth-error"><ShieldCheck size={14} /> {error}</p>}
-
-          <button className="btn primary" type="submit" disabled={loading}>
-            {loading ? <Loader2 size={16} className="spin" /> : <UserPlus size={16} />}
-            Create account
-          </button>
-        </form>
-
-        <p className="auth-switch">
-          Already have an account? <Link href="/signin">Sign in</Link>
-        </p>
       </div>
     </main>
   );
