@@ -4,6 +4,7 @@ import Providers from "./providers";
 export const metadata = {
   title: "Relay",
   description: "Actions, AI, and reports across GitHub, Notion, Gmail, and Calendar.",
+  icons: { icon: "/relay-logo.svg" },
 };
 
 export default function RootLayout({ children }) {

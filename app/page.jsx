@@ -1,5 +1,6 @@
 "use client";
 
+import AppLogo from "@/app/components/AppLogo";
 import ActionsPanel from "@/app/components/actions/ActionsPanel";
 import FileUploadField from "@/app/components/actions/file-upload";
 import TemplatesPanel from "@/app/components/templates/TemplatesPanel";
@@ -241,11 +242,7 @@ export default function Home() {
     <main className="app-shell">
       <aside className="sidebar">
         <div className="brand">
-          <div className="brand-mark">RL</div>
-          <div>
-            <h1 className="brand-title">Relay</h1>
-            <p className="brand-subtitle">Actions, AI, and reports across your apps.</p>
-          </div>
+          <AppLogo className="brand-logo" />
         </div>
 
         <nav className="nav-list">

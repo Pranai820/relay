@@ -55,10 +55,18 @@ const files = execSync(`git -c safe.directory=${root.replace(/\\/g, "/")} ls-fil
   cwd: root,
 }).trim().split(/\r?\n/).filter(Boolean);
 
-const upserts = files.map((f) => ({
-  path: f,
-  content: fs.readFileSync(path.join(root, f), "utf8"),
-}));
+const BINARY_EXT = new Set([".png", ".jpg", ".jpeg", ".gif", ".webp", ".ico", ".woff", ".woff2"]);
+const upserts = files.map((f) => {
+  const ext = f.slice(f.lastIndexOf(".")).toLowerCase();
+  if (BINARY_EXT.has(ext)) {
+    return {
+      path: f,
+      content: fs.readFileSync(path.join(root, f)).toString("base64"),
+      encoding: "base64",
+    };
+  }
+  return { path: f, content: fs.readFileSync(path.join(root, f), "utf8") };
+});
 
 const commit = await run("GITHUB_COMMIT_MULTIPLE_FILES", {
   owner: GITHUB_OWNER,

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import AppLogo from "@/app/components/AppLogo";
 import Link from "next/link";
 import { Loader2, ShieldCheck, UserPlus } from "lucide-react";
 import { getPasswordError } from "@/lib/password";
@@ -52,10 +53,10 @@ export default function SignUpPage() {
     <main className="auth-shell">
       <div className="auth-card">
         <div className="auth-brand">
-          <div className="brand-mark">RL</div>
-          <div>
+          <AppLogo className="auth-logo" />
+          <div className="auth-brand-copy">
             <h1 className="auth-title">Create your account</h1>
-            <p className="auth-subtitle">Your connected work hub — GitHub, Notion, Gmail, and Calendar.</p>
+            <p className="auth-subtitle">GitHub, Notion, Gmail, and Calendar in one place.</p>
           </div>
         </div>
 

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import AppLogo from "@/app/components/AppLogo";
 import Link from "next/link";
 import { KeyRound, Loader2, LogIn } from "lucide-react";
 
@@ -36,10 +37,10 @@ export default function SignInPage() {
     <main className="auth-shell">
       <div className="auth-card">
         <div className="auth-brand">
-          <div className="brand-mark">RL</div>
-          <div>
+          <AppLogo className="auth-logo" />
+          <div className="auth-brand-copy">
             <h1 className="auth-title">Welcome back</h1>
-            <p className="auth-subtitle">Sign in to Relay.</p>
+            <p className="auth-subtitle">Sign in to your connected work hub.</p>
           </div>
         </div>
 
